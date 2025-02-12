@@ -11,7 +11,7 @@ services:
       - ./backend:/app
       - ./uploads:/app/uploads
     networks:
-      - app_network
+      - dokploy-network
     depends_on:
       - db
       - chromadb
@@ -35,7 +35,7 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     networks:
-      - app_network
+      - dokploy-network
 
   db:
     image: mysql:8.0
@@ -51,7 +51,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
-      - app_network
+      - dokploy-network
 
   chromadb:
     image: chromadb/chroma:latest
@@ -60,7 +60,7 @@ services:
     volumes:
       - chroma_data:/chroma/chroma
     networks:
-      - app_network
+      - dokploy-network
 
   # For Qdrant, Remove the comment and run the following command to start the service
   # qdrant:
@@ -87,7 +87,7 @@ services:
       - minio_data:/data
     command: server --console-address ":9001" /data
     networks:
-      - app_network
+      - dokploy-network
 
 volumes:
   mysql_data:
