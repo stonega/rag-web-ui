@@ -21,6 +21,7 @@ COPY . .
 
 # Copy entrypoint script first
 RUN chmod +x entrypoint.sh
+RUN ./entrypoint.sh
 
 # Create uploads directory
 RUN mkdir -p uploads
