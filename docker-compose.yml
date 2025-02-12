@@ -96,5 +96,5 @@ volumes:
   # qdrant_data:
 
 networks:
-  app_network:
-    driver: bridge
+  dokploy-network:
+    external: true
